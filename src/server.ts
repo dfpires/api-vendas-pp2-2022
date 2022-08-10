@@ -1,6 +1,7 @@
 // importa o express
 import express from 'express'
-
+// importar o arquivo de conexão com o banco de dados
+import './typeorm' // acessa o arquivo index.ts
 // cria o servidor
 let servidor = express()
 
