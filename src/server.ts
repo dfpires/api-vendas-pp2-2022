@@ -5,6 +5,8 @@ import './typeorm' // acessa o arquivo index.ts
 // cria o servidor
 let servidor = express()
 
+// converte dados da requisição para json
+servidor.use(express.json()) 
 // importa as rotas
 import router from './routes'
 
