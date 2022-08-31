@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import CreateProductService from "../services/CreateProductService";
+import ListProductService from "../services/ListProductService";
 
 class ProductController {
 
@@ -14,6 +15,16 @@ class ProductController {
         // retorna ou responder este novo produto criado em formato json
         return response.json(newProduct)
     }
+
+    public async list(request: Request, response: Response ): Promise<Response> {
+
+        let listService = new ListProductService()
+        let products = await listService.execute()
+        return response.json(products)
+
+    }
+
+    
 }
 
 export default ProductController
