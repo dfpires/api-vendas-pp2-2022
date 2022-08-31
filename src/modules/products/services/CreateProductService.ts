@@ -31,6 +31,7 @@ class CreateProductService {
         await productRepository.save(novo)
         return novo
     }
+
 }
 
 export default CreateProductService
