@@ -13,4 +13,8 @@ routerProduct.post('/', controllerProduct.create)
 
 routerProduct.get('/', controllerProduct.list)
 
+routerProduct.get('/:id', controllerProduct.show)
+
+routerProduct.delete('/:id', controllerProduct.delete)
+
 export default routerProduct
