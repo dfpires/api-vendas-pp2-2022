@@ -17,4 +17,6 @@ routerProduct.get('/:id', controllerProduct.show)
 
 routerProduct.delete('/:id', controllerProduct.delete)
 
+routerProduct.put('/:id', controllerProduct.update)
+
 export default routerProduct

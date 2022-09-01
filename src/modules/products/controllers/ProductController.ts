@@ -3,6 +3,7 @@ import CreateProductService from "../services/CreateProductService";
 import DeleteProductService from "../services/DeleteProductService";
 import ListProductService from "../services/ListProductService";
 import ShowProductService from "../services/ShowProductService";
+import UpdateProductService from "../services/UpdateProductService";
 
 class ProductController {
 
@@ -40,6 +41,17 @@ class ProductController {
         await deleteProductService.execute(id)
         return response.json([])
     }
+
+    public async update(request: Request, response: Response): Promise<Response> {
+        // recupera id, name, price, quantity do produto
+        const {id} = request.params
+        const {name, quantity, price} = request.body
+        const updateProductService = new UpdateProductService()
+        const productUpdated = await 
+            updateProductService.execute({id, name, price, quantity})
+        return response.json(productUpdated)
+    }
+
 }
 
 export default ProductController
