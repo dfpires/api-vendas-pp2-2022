@@ -9,15 +9,16 @@ import 'express-async-errors'
 
 // cria o servidor
 let servidor = express()
-
-// converte dados da requisição para json
 servidor.use(express.json()) 
+
 // importa as rotas
 import router from './routes'
 import AppError from './errors/AppError'
 
-
 servidor.use(router) // servidor vai usar nossas rotas
+// converte dados da requisição para json
+
+
 // vamos fazer a classe AppError tratar o erro
 servidor.use(
     (error: Error, request: Request, response: Response, next: NextFunction) => {
@@ -29,9 +30,10 @@ servidor.use(
             })
         }
         // erro não foi gerado pelo AppError
+        console.log(error)
         return response.status(500).json({
             status: 'error',
-            message: 'Erro interno do servidor'
+            message: "erro interno do servidor"
         })
     }
 )

@@ -25,7 +25,7 @@ class CreateUserService {
             // vamos lançar uma exceção
             throw new AppError('Já existe um usuários com este email')
         }
-        let senhaCriptografada = await hash(password, 8)
+        let senhaCriptografada = await hash(password, 20)
         // vem aqui somente se não tem produto com o nome criado
         const novo = userRepository.create({
             name, 
