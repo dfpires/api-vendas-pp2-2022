@@ -10,12 +10,12 @@ class UserController {
         // obter os dados do navegador (usuário)
         console.log(request.body)
         let {name, email, password} = request.body
-        console.log(name)
-        console.log(email)
-        console.log(password)
+       
         // vamos criar objeto da classe CreateProductService
         const object = new CreateUserService()
+        console.log(`Passou 1`)
         const newUser = await object.execute({name, email, password})
+        console.log(`Passou 2`)
         // retorna ou responder este novo produto criado em formato json
         return response.json(newUser)
     }

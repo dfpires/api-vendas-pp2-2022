@@ -16,16 +16,18 @@ class CreateUserService {
     // cria um método assíncrono que executa a inserção
     // método precisa promoter que irá retornar um produto
     public async execute({name, email, password}: IRequest): Promise<User> {
-        
+       
         // obter o repositório de Product
         const userRepository = getCustomRepository(UserRepository)
+        
         // criando uma regra de negócio - consulta usuários com email
         const userExist = await userRepository.findByEmail(email);
+        
         if (userExist){
             // vamos lançar uma exceção
             throw new AppError('Já existe um usuários com este email')
         }
-        let senhaCriptografada = await hash(password, 20)
+        let senhaCriptografada = await hash(password, 10)
         // vem aqui somente se não tem produto com o nome criado
         const novo = userRepository.create({
             name, 
